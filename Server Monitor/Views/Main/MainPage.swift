@@ -14,11 +14,15 @@ struct MainPage: View {
     
     @ObservedObject var serverProvider = ServerProvider.shared
     
-    @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
-    @AppStorage("BackgroundUseMaterial") var bgUseMaterial: Bool = true
+    
     var body: some View {
         NavigationView{
             ScrollView{
+                if serverProvider.groups.isEmpty{
+                    Text("还没有服务器呢")
+                        .foregroundColor(.gray)
+                        .padding(100)
+                }
                 ForEach(serverProvider.groups, id: \.label){group in
                     Group{
                         Section{
@@ -58,31 +62,43 @@ struct MainPage: View {
             .navigationBarTitleDisplayMode(.inline)
             
             .background{
-                ZStack{
-                    if let url = URL(string: bgImgLink){
-                        KFImage(url)
-                            .resizable()
-                            .scaledToFill()
-                            .ignoresSafeArea()
-                            .overlay{
-                                if bgUseMaterial{
-                                    Rectangle()
-                                        .foregroundStyle(.ultraThinMaterial)
-                                        .ignoresSafeArea()
-                                }
-                                
-                            }
-                            .animation(.easeInOut)
-                    }
-                    
-                }
+                backgroundImage()
             }
         }
         .navigationViewStyle(.stack)
         
     }
     
-    
+    @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
+    @AppStorage("UseMaterial") var useMaterial: Bool = true
+    @AppStorage("BackgroundImageRender") var bgImgRender = "Material"
+    func backgroundImage() -> some View{
+        Group{
+            if let url = URL(string: bgImgLink){
+                let image =
+                KFImage(url)
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                
+                if bgImgRender == "Material"{
+                    image.overlay{
+                            if useMaterial{
+                                Rectangle()
+                                    .foregroundStyle(.ultraThinMaterial)
+                                    .ignoresSafeArea()
+                            }
+                        }
+                }else if bgImgRender == "Blur"{
+                    image.blur(radius: 10)
+                }else{
+                    image
+                }
+            }
+            
+        }
+        .animation(.easeInOut)
+    }
     
     func convertTimestampToDateString(timestamp: TimeInterval, format: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let date = Date(timeIntervalSince1970: timestamp)

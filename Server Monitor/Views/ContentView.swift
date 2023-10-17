@@ -19,8 +19,9 @@ struct ContentView: View {
             MainPage(showSettings: $showSettings)
                 .environment(\.managedObjectContext, viewContext)
                 .sheet(isPresented: $showSettings){
-                    SettingsPage()
+                    SettingsPage(showSettingsPage: $showSettings)
                         .environment(\.managedObjectContext, viewContext)
+                    
                 }
             
             VStack{

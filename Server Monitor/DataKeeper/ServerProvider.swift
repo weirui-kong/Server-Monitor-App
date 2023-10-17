@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 class ServerProvider: ObservableObject{
-    static let monitors = [("OSP", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias2", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias3", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias4", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias5", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru)]
+    // static let monitors = [("OSP", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias2", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias3", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias4", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru), ("OSP alias5", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru)]
+    static let monitors = [("OSP", "https://server.onespirit.fyi/json/stats.json", MonitorType.hotaru)]
     
     static var shared = ServerProvider()
     

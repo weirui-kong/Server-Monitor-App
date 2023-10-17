@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ServerCardView: View {
+    
     var server: UniversalServer
     
     var body: some View {
@@ -18,11 +19,7 @@ struct ServerCardView: View {
         }
         .foregroundColor(.white.opacity(0.8))
         .padding()
-        .background{
-            RoundedRectangle(cornerRadius: 10)
-                .foregroundStyle(.ultraThinMaterial)
-            
-        }
+        .materialBackground()
         
     }
     
@@ -48,7 +45,7 @@ struct ServerCardView: View {
             HStack{
                 HStack{
                     Image(systemName: "network")
-                        .overlay(Text("4").font(.system(size: 10)).background(Material.ultraThin).cornerRadius(3.0).offset(x: 5, y: 5))
+                        .overlay(Text("4").font(.system(size: 10)).colorFillBackground(cornerRadius: 3).offset(x: 5, y: 5))
                     Text(server.online4 ? "Online" : "Offline")
                 }
                 .opacity(server.online4 ? 1 : 0.5)
@@ -61,7 +58,7 @@ struct ServerCardView: View {
             HStack{
                 HStack{
                     Image(systemName: "network")
-                        .overlay(Text("6").font(.system(size: 10)).background(Material.ultraThin).cornerRadius(3.0).offset(x: 5, y: 5))
+                        .overlay(Text("6").font(.system(size: 10)).colorFillBackground(cornerRadius: 3).offset(x: 5, y: 5))
                     Text(server.online6 ? "Online" : "Offline")
                 }
                 .opacity(server.online6 ? 1 : 0.5)
@@ -119,7 +116,7 @@ struct ServerCardView: View {
                 Text(percent == nil ? "N/A" : overlay)
                     .font(.caption)
                     .padding(3)
-                    .background(RoundedRectangle(cornerRadius: 5).foregroundStyle(.ultraThinMaterial).opacity(0.5))
+                    .colorFillBackground(cornerRadius: 5, opacity: 0.5)
             }.frame(height: 25)
             
         }

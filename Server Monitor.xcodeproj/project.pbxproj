@@ -15,6 +15,7 @@
 		0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */; };
 		0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A86E0542AAB2DDD00D11461 /* Kingfisher */; };
 		0A86E05D2AAB726300D11461 /* MonitorConfigs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E05B2AAB726300D11461 /* MonitorConfigs.xcdatamodeld */; };
+		0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */; };
 		0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */; };
 		0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C42AAAF89B001F0D8C /* DataFactory.swift */; };
 		0AE022C82AAAF996001F0D8C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE022C72AAAF996001F0D8C /* Alamofire */; };
@@ -37,6 +38,7 @@
 		0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		0A86E05C2AAB726300D11461 /* MonitorConfigs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MonitorConfigs.xcdatamodel; sourceTree = "<group>"; };
+		0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackground.swift; sourceTree = "<group>"; };
 		0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotaruData.swift; sourceTree = "<group>"; };
 		0AE022C42AAAF89B001F0D8C /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		0AE022CA2AAAF9D3001F0D8C /* UniversalServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalServer.swift; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 				0AC20B862AAAF672004D2318 /* Data */,
 				0AE022CC2AAAFD71001F0D8C /* DataKeeper */,
 				0A86D0E72AAAF20E00E2B60E /* Server_MonitorApp.swift */,
-				0A86D0E92AAAF20E00E2B60E /* ContentView.swift */,
 				0A86D0EB2AAAF21300E2B60E /* Assets.xcassets */,
 				0A86D0ED2AAAF21300E2B60E /* Server_Monitor.entitlements */,
 				0AE022D72AAB1136001F0D8C /* README.md */,
@@ -104,6 +105,8 @@
 		0A86D0F62AAAF2B800E2B60E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A86D0E92AAAF20E00E2B60E /* ContentView.swift */,
+				0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */,
 				0A86D0FB2AAAF2F000E2B60E /* Main */,
 				0A86D0FC2AAAF2F600E2B60E /* Settings */,
 			);
@@ -263,6 +266,7 @@
 				0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */,
 				0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */,
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,
+				0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */,
 				0AE022D22AAAFFF6001F0D8C /* ServerProvider.swift in Sources */,
 				0A86E05D2AAB726300D11461 /* MonitorConfigs.xcdatamodeld in Sources */,
 			);
@@ -418,8 +422,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,8 +463,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
