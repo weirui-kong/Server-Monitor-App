@@ -71,7 +71,7 @@ struct MainPage: View {
     
     @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
     @AppStorage("UseMaterial") var useMaterial: Bool = true
-    @AppStorage("BackgroundImageRender") var bgImgRender = "Material"
+    @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
     func backgroundImage() -> some View{
         Group{
             if let url = URL(string: bgImgLink){
@@ -83,12 +83,10 @@ struct MainPage: View {
                 
                 if bgImgRender == "Material"{
                     image.overlay{
-                            if useMaterial{
-                                Rectangle()
-                                    .foregroundStyle(.ultraThinMaterial)
-                                    .ignoresSafeArea()
-                            }
-                        }
+                        Rectangle()
+                            .foregroundStyle(.ultraThinMaterial)
+                            .ignoresSafeArea()
+                    }
                 }else if bgImgRender == "Blur"{
                     image.blur(radius: 10)
                 }else{

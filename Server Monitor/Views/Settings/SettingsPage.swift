@@ -16,7 +16,7 @@ struct SettingsPage: View {
     @AppStorage("ShowServerCount") var showServerCount = true
     
     @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
-    @AppStorage("BackgroundImageRender") var bgImgRender = "Material"
+    @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
     let imagePresentMethod = ["Default", "Blur", "Material"]
     
     @Binding var showSettingsPage: Bool
@@ -24,12 +24,18 @@ struct SettingsPage: View {
         NavigationView{
             List{
                 Section{
-                    
-                    Toggle("组件使用 Material", isOn: $useMaterial)
-                
                     Toggle("显示 Badge", isOn: $showServerCount)
                 }header: {
                     Text("首页")
+                        .headerProminence(.increased)
+                }
+                
+                Section{
+                    
+                    Toggle("使用 Material", isOn: $useMaterial)
+                
+                }header: {
+                    Text("组件")
                         .headerProminence(.increased)
                 }
                 

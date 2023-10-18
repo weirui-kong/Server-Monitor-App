@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SemitransparentLayer: View {
-    @AppStorage("BackgroundUseMaterial") var bgUseMaterial: Bool = true
+    @AppStorage("UseMaterial") var bgUseMaterial: Bool = true
     var forceUseColorFill = false
     var cornerRadius: CGFloat
     var body: some View {
