@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ServerCardView: View {
     
+    @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
+
     var server: UniversalServer
-    
+    var largerScale = false
     var body: some View {
         VStack{
             basicInfo()
@@ -19,7 +21,7 @@ struct ServerCardView: View {
         }
         .foregroundColor(.white.opacity(0.8))
         .padding()
-        .materialBackground()
+        .materialBackground(overrideColor: plainFillTheme == "Dark" ? .black : .white)
         
     }
     
@@ -28,7 +30,7 @@ struct ServerCardView: View {
             HStack{
                 Text(getFlagEmoji(for: server.region))
                 Text(server.name)
-            }.font(.title2)
+            }.font(largerScale ? .title : .title2)
             
             HStack{
                 Image(systemName: "location")
@@ -36,7 +38,7 @@ struct ServerCardView: View {
                 Spacer()
                 Image(systemName: "clock.badge.checkmark")
                 Text(server.uptime ?? "未知")
-            }.font(.footnote)
+            }.font(largerScale ? .body : .footnote)
         }
     }
     
@@ -45,7 +47,12 @@ struct ServerCardView: View {
             HStack{
                 HStack{
                     Image(systemName: "network")
-                        .overlay(Text("4").font(.system(size: 10)).colorFillBackground(cornerRadius: 3).offset(x: 5, y: 5))
+                        .overlay{
+                            Text("4")
+                                .font(.system(size: largerScale ? 14 : 10))
+                                .colorFillBackground(cornerRadius: 3, overrideColor: .white)
+                                .offset(x: 5, y: 5)
+                        }
                     Text(server.online4 ? "Online" : "Offline")
                 }
                 .opacity(server.online4 ? 1 : 0.5)
@@ -53,25 +60,30 @@ struct ServerCardView: View {
                 
                 Image(systemName: "icloud.and.arrow.up")
                 Text("\(formatBytes(server.networkTx))/\(formatBytes(server.networkOut))" )
-            }.font(.footnote)
+            }.font(largerScale ? .body : .footnote)
             
             HStack{
                 HStack{
                     Image(systemName: "network")
-                        .overlay(Text("6").font(.system(size: 10)).colorFillBackground(cornerRadius: 3).offset(x: 5, y: 5))
+                        .overlay{
+                            Text("6")
+                                .font(.system(size: largerScale ? 14 : 10))
+                                .colorFillBackground(cornerRadius: 3, overrideColor: .white)
+                                .offset(x: 5, y: 5)
+                        }
                     Text(server.online6 ? "Online" : "Offline")
                 }
                 .opacity(server.online6 ? 1 : 0.5)
                 Spacer()
                 Image(systemName: "icloud.and.arrow.down")
                 Text("\(formatBytes(server.networkRx))/\(formatBytes(server.networkIn))" )
-            }.font(.footnote)
+            }.font(largerScale ? .body : .footnote)
         }
     }
     
     private func loadBars() -> some View{
     
-        VStack(spacing: 15){
+        VStack(spacing: largerScale ? 17 : 15){
             progressBar(of: server.cpuPercent, title: "CPU", sysImg: "cpu",
                         overlay: "\(server.cpuPercent ?? 0) %"
             )
@@ -96,7 +108,8 @@ struct ServerCardView: View {
                 .frame(width: 20, height: 20)
             Text(title)
                 .minimumScaleFactor(0.5)
-                .frame(width: 40)
+                .font(largerScale ? .title3 : .body)
+                .frame(width: largerScale ? 45 : 40)
             ZStack{
                 GeometryReader{geo in
                     ZStack(alignment: .leading){
@@ -114,10 +127,11 @@ struct ServerCardView: View {
                 }
                 
                 Text(percent == nil ? "N/A" : overlay)
-                    .font(.caption)
+                    .font(largerScale ? .subheadline : .caption)
                     .padding(3)
                     .colorFillBackground(cornerRadius: 5, opacity: 0.5)
-            }.frame(height: 25)
+                
+            }.frame(height: largerScale ? 30 : 25)
             
         }
     }
@@ -200,6 +214,6 @@ extension Color {
         hddUsed: 50000,
         custom: "Custom info",
         region: "US"
-    ))
+    ), largerScale: true)
 }
  

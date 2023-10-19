@@ -10,11 +10,16 @@ import Kingfisher
 
 struct MainPage: View {
     @Binding var showSettings: Bool
-    @Environment(\.managedObjectContext) var viewContext
-    
+    @AppStorage("LargerScale") var largerScale = false
+    @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
+
     @ObservedObject var serverProvider = ServerProvider.shared
     
     
+    @StateObject private var motion = MotionManager.shared
+    
+    @AppStorage("AllowDepthEffect") var allowDepthEffect: Bool = false
+
     var body: some View {
         NavigationView{
             ScrollView{
@@ -34,10 +39,15 @@ struct MainPage: View {
                                     .cornerRadius(15)
                                     .padding()
                             }else{
-                                LazyVGrid(columns: [GridItem(.adaptive(minimum: 280, maximum: 400))]){
+                                LazyVGrid(columns: [GridItem(.adaptive(
+                                    minimum: largerScale ? 350 : 280,
+                                    maximum: largerScale ? 500 : 400
+                                ))]){
                                     
                                     ForEach(group.server, id: \.name){server in
-                                        ServerCardView(server: server)
+                                        ServerCardView(server: server, largerScale: largerScale)
+                                            .padding(largerScale ? 5 : 0)
+                                            
                                     }
                                 }
                             }
@@ -45,16 +55,20 @@ struct MainPage: View {
                         }header: {
                             Text(group.label)
                                 .font(.headline)
+                                .foregroundStyle(plainFillTheme == "Dark" ? .black : .white)
+
                         }
                         if group.lastUpdated != 0{
                             HStack{
                                 Spacer()
                                 Text("上次更新：\(convertTimestampToDateString(timestamp: TimeInterval(group.lastUpdated)))")
                                     .font(.caption.monospaced())
+                                    .foregroundStyle(plainFillTheme == "Dark" ? .black : .white)
                             }
                         }
                     }
                     .padding(.bottom, 10)
+                    .offset(x: allowDepthEffect ? motion.x * -40 : 0, y: allowDepthEffect ? motion.y * -40 : 0)
                 }
                 .padding()
             }
@@ -72,6 +86,8 @@ struct MainPage: View {
     @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
     @AppStorage("UseMaterial") var useMaterial: Bool = true
     @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
+    @AppStorage("BackgroundImageBlurRadius") var bgImgBlurRadius = 10.0
+    
     func backgroundImage() -> some View{
         Group{
             if let url = URL(string: bgImgLink){
@@ -85,10 +101,10 @@ struct MainPage: View {
                     image.overlay{
                         Rectangle()
                             .foregroundStyle(.ultraThinMaterial)
-                            .ignoresSafeArea()
+                            
                     }
                 }else if bgImgRender == "Blur"{
-                    image.blur(radius: 10)
+                    image.blur(radius: bgImgBlurRadius)
                 }else{
                     image
                 }
@@ -96,6 +112,9 @@ struct MainPage: View {
             
         }
         .animation(.easeInOut)
+        .scaleEffect(allowDepthEffect ? 1.2 : 1, anchor: .center)
+        .offset(x: allowDepthEffect ? motion.x * 40 : 0, y: allowDepthEffect ? motion.y * 40 : 0)
+        .ignoresSafeArea()
     }
     
     func convertTimestampToDateString(timestamp: TimeInterval, format: String = "yyyy-MM-dd HH:mm:ss") -> String {

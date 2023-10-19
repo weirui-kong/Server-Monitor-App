@@ -14,7 +14,8 @@
 		0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */; };
 		0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */; };
 		0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A86E0542AAB2DDD00D11461 /* Kingfisher */; };
-		0A86E05D2AAB726300D11461 /* MonitorConfigs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E05B2AAB726300D11461 /* MonitorConfigs.xcdatamodeld */; };
+		0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B642AE0181D00C369AD /* MotionCapture.swift */; };
+		0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */; };
 		0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */; };
 		0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */; };
 		0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C42AAAF89B001F0D8C /* DataFactory.swift */; };
@@ -37,7 +38,8 @@
 		0A86D0EF2AAAF21300E2B60E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
-		0A86E05C2AAB726300D11461 /* MonitorConfigs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MonitorConfigs.xcdatamodel; sourceTree = "<group>"; };
+		0AB52B642AE0181D00C369AD /* MotionCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCapture.swift; sourceTree = "<group>"; };
+		0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDeviceOrientation.swift; sourceTree = "<group>"; };
 		0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackground.swift; sourceTree = "<group>"; };
 		0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotaruData.swift; sourceTree = "<group>"; };
 		0AE022C42AAAF89B001F0D8C /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
@@ -118,6 +120,8 @@
 			children = (
 				0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */,
 				0AE022D52AAB0D8F001F0D8C /* ServerCardView.swift */,
+				0AB52B642AE0181D00C369AD /* MotionCapture.swift */,
+				0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -133,7 +137,6 @@
 		0A86E05E2AAB77EF00D11461 /* Monitor */ = {
 			isa = PBXGroup;
 			children = (
-				0A86E05B2AAB726300D11461 /* MonitorConfigs.xcdatamodeld */,
 				0AE022CF2AAAFEF8001F0D8C /* MonitorType.swift */,
 			);
 			path = Monitor;
@@ -264,11 +267,12 @@
 				0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */,
 				0AE022CE2AAAFDB0001F0D8C /* NetworkManager.swift in Sources */,
 				0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */,
+				0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */,
 				0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */,
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,
 				0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */,
+				0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */,
 				0AE022D22AAAFFF6001F0D8C /* ServerProvider.swift in Sources */,
-				0A86E05D2AAB726300D11461 /* MonitorConfigs.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,19 +529,6 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		0A86E05B2AAB726300D11461 /* MonitorConfigs.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0A86E05C2AAB726300D11461 /* MonitorConfigs.xcdatamodel */,
-			);
-			currentVersion = 0A86E05C2AAB726300D11461 /* MonitorConfigs.xcdatamodel */;
-			path = MonitorConfigs.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0A86D0DC2AAAF20E00E2B60E /* Project object */;
 }
