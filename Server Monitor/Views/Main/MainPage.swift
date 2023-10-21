@@ -18,14 +18,14 @@ struct MainPage: View {
     
     @StateObject private var motion = MotionManager.shared
     
-    @AppStorage("AllowDepthEffect") var allowDepthEffect: Bool = false
+    @AppStorage("AllowDepthEffectOfBackground") var allowDepthEffectOfBackground: Bool = true
+    @AppStorage("AllowDepthEffectOfForeground") var allowDepthEffectOfForeground: Bool = false
 
     var body: some View {
         NavigationView{
             ScrollView{
                 if serverProvider.groups.isEmpty{
                     Text("还没有服务器呢")
-                        .foregroundColor(.gray)
                         .padding(100)
                 }
                 ForEach(serverProvider.groups, id: \.label){group in
@@ -68,7 +68,7 @@ struct MainPage: View {
                         }
                     }
                     .padding(.bottom, 10)
-                    .offset(x: allowDepthEffect ? motion.x * -40 : 0, y: allowDepthEffect ? motion.y * -40 : 0)
+                    .offset(x: allowDepthEffectOfForeground ? motion.x * -40 : 0, y: allowDepthEffectOfForeground ? motion.y * -40 : 0)
                 }
                 .padding()
             }
@@ -112,8 +112,8 @@ struct MainPage: View {
             
         }
         .animation(.easeInOut)
-        .scaleEffect(allowDepthEffect ? 1.2 : 1, anchor: .center)
-        .offset(x: allowDepthEffect ? motion.x * 40 : 0, y: allowDepthEffect ? motion.y * 40 : 0)
+        .scaleEffect(allowDepthEffectOfBackground ? 1.2 : 1, anchor: .center)
+        .offset(x: allowDepthEffectOfBackground ? motion.x * 40 : 0, y: allowDepthEffectOfBackground ? motion.y * 40 : 0)
         .ignoresSafeArea()
     }
     

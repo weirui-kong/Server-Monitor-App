@@ -16,14 +16,24 @@ struct SettingsPage: View {
     @AppStorage("LargerScale") var largerScale = false
     @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
     let plainFillThemes = ["Light", "Dark"]
-    
+    @AppStorage("UseHighSaturationColors") var useHighSaturationColors = false
     
     @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
     @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
     @AppStorage("BackgroundImageBlurRadius") var bgImgBlurRadius = 10.0
-    @AppStorage("AllowDepthEffect") var allowDepthEffect: Bool = false{
+    @AppStorage("AllowDepthEffectOfBackground") var allowDepthEffectOfBackground: Bool = true{
         didSet{
-            if allowDepthEffect{
+            if allowDepthEffectOfBackground || allowDepthEffectOfForeground{
+                MotionManager.shared.start()
+            }else{
+                MotionManager.shared.stop()
+            }
+        }
+    }
+    
+    @AppStorage("AllowDepthEffectOfForeground") var allowDepthEffectOfForeground: Bool = false{
+        didSet{
+            if allowDepthEffectOfBackground || allowDepthEffectOfForeground{
                 MotionManager.shared.start()
             }else{
                 MotionManager.shared.stop()
@@ -65,7 +75,7 @@ struct SettingsPage: View {
                         }
                     
                     Toggle("更大视图", isOn: $largerScale)
-
+                    Toggle("更高饱和度", isOn: $useHighSaturationColors)
                 }header: {
                     Text("组件")
                         .headerProminence(.increased)
@@ -93,7 +103,8 @@ struct SettingsPage: View {
                         }
                     }
                     
-                    Toggle("深度效果", isOn: $allowDepthEffect)
+                    Toggle("深度效果(背景)", isOn: $allowDepthEffectOfBackground)
+                    Toggle("深度效果(前景)", isOn: $allowDepthEffectOfForeground)
                     
                     HStack {
                         Spacer()
@@ -131,7 +142,8 @@ struct SettingsPage: View {
         self.bgImgLink = "https://api.dujin.org/bing/1920.php"
         self.bgImgRender = "Blur"
         self.bgImgBlurRadius = 10.0
-        self.allowDepthEffect = true
+        self.allowDepthEffectOfBackground = true
+        self.allowDepthEffectOfForeground = false
     }
     
     @State var selectedType_raw = "HOTARU"

@@ -17,7 +17,17 @@ struct ServerCardView: View {
         VStack{
             basicInfo()
             netInfo()
-            loadBars()
+            if server.online{
+                loadBars()
+            }else{
+                loadBars()
+                    .blur(radius: 7)
+                    .overlay{
+                        Text("当前服务器不在线")
+                            .padding()
+                            .materialBackground()
+                    }
+            }
         }
         .foregroundColor(.white.opacity(0.8))
         .padding()
@@ -51,7 +61,7 @@ struct ServerCardView: View {
                             Text("4")
                                 .font(.system(size: largerScale ? 14 : 10))
                                 .colorFillBackground(cornerRadius: 3, overrideColor: .white)
-                                .offset(x: 5, y: 5)
+                                .offset(x: largerScale ? 8 : 5, y: largerScale ? 8 : 5)
                         }
                     Text(server.online4 ? "Online" : "Offline")
                 }
@@ -69,7 +79,7 @@ struct ServerCardView: View {
                             Text("6")
                                 .font(.system(size: largerScale ? 14 : 10))
                                 .colorFillBackground(cornerRadius: 3, overrideColor: .white)
-                                .offset(x: 5, y: 5)
+                                .offset(x: largerScale ? 8 : 5, y: largerScale ? 8 : 5)
                         }
                     Text(server.online6 ? "Online" : "Offline")
                 }
@@ -119,7 +129,7 @@ struct ServerCardView: View {
                         Capsule()
                             .frame(width: max(20, Double(percent ?? 100) / 100.0 * geo.size.width))
                             .foregroundStyle(getColorForLoad(percent))
-                            .opacity(0.7)
+                            .opacity(0.8)
                             .animation(.spring(response: 0.5, dampingFraction: 0.5), value: percent)
                         
                     }
@@ -136,19 +146,25 @@ struct ServerCardView: View {
         }
     }
     
-    
+    @AppStorage("UseHighSaturationColors") var useHighSaturationColors = false
     private func getColorForLoad(_ load: Int? ) -> Color {
         guard (load != nil) else{
             return .black.opacity(0.8)
         }
         
-        switch load! {
-        case 0..<35:
+        switch (load!, useHighSaturationColors) {
+        case (0..<35, false):
             return Color.fromHex("7ac143")!
-        case 35..<75:
+        case (35..<75, false):
             return Color.fromHex("f48924")!
-        default:
+        case (_, false):
             return Color.fromHex("ff4c4c")!
+        case (0..<35, true):
+            return Color.fromHex("50C878")!
+        case (35..<75, true):
+            return Color.fromHex("F28C28")!
+        case (_, true):
+            return Color.fromHex("E34234")!
         }
     }
     private func formatBytes(_ bytes: Int?) -> String {
