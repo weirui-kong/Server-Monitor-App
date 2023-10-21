@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A552EE92AE3F7FE00FEA576 /* Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A552EE82AE3F7FE00FEA576 /* Reset.swift */; };
 		0A86D0E82AAAF20E00E2B60E /* Server_MonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0E72AAAF20E00E2B60E /* Server_MonitorApp.swift */; };
 		0A86D0EA2AAAF20E00E2B60E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0E92AAAF20E00E2B60E /* ContentView.swift */; };
 		0A86D0EC2AAAF21300E2B60E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A86D0EB2AAAF21300E2B60E /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A552EE82AE3F7FE00FEA576 /* Reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reset.swift; sourceTree = "<group>"; };
 		0A86D0E42AAAF20E00E2B60E /* Server Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Server Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A86D0E72AAAF20E00E2B60E /* Server_MonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server_MonitorApp.swift; sourceTree = "<group>"; };
 		0A86D0E92AAAF20E00E2B60E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A552EE72AE3F7C800FEA576 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0AB52B642AE0181D00C369AD /* MotionCapture.swift */,
+				0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */,
+				0A552EE82AE3F7FE00FEA576 /* Reset.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		0A86D0DB2AAAF20E00E2B60E = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +96,9 @@
 		0A86D0E62AAAF20E00E2B60E /* Server Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				0A552EE72AE3F7C800FEA576 /* Utils */,
 				0A86D0F62AAAF2B800E2B60E /* Views */,
-				0AC20B862AAAF672004D2318 /* Data */,
+				0AC20B862AAAF672004D2318 /* DataDef */,
 				0AE022CC2AAAFD71001F0D8C /* DataKeeper */,
 				0A86D0E72AAAF20E00E2B60E /* Server_MonitorApp.swift */,
 				0A86D0EB2AAAF21300E2B60E /* Assets.xcassets */,
@@ -120,8 +133,6 @@
 			children = (
 				0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */,
 				0AE022D52AAB0D8F001F0D8C /* ServerCardView.swift */,
-				0AB52B642AE0181D00C369AD /* MotionCapture.swift */,
-				0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -142,13 +153,13 @@
 			path = Monitor;
 			sourceTree = "<group>";
 		};
-		0AC20B862AAAF672004D2318 /* Data */ = {
+		0AC20B862AAAF672004D2318 /* DataDef */ = {
 			isa = PBXGroup;
 			children = (
 				0A86E05E2AAB77EF00D11461 /* Monitor */,
 				0AE022C92AAAF9A9001F0D8C /* Server */,
 			);
-			path = Data;
+			path = DataDef;
 			sourceTree = "<group>";
 		};
 		0AC20B872AAAF72C004D2318 /* Hotaru */ = {
@@ -267,6 +278,7 @@
 				0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */,
 				0AE022CE2AAAFDB0001F0D8C /* NetworkManager.swift in Sources */,
 				0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */,
+				0A552EE92AE3F7FE00FEA576 /* Reset.swift in Sources */,
 				0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */,
 				0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */,
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,

@@ -8,6 +8,8 @@
 import Foundation
 
 class UniversalServer {
+
+    
     var name: String // 服务器名称
     
     var type: String // 服务器类型

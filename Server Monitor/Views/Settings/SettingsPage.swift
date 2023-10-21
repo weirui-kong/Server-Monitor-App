@@ -44,6 +44,9 @@ struct SettingsPage: View {
     let imagePresentMethods = ["Plain", "Blur", "Material"]
     
     @Binding var showSettingsPage: Bool
+    
+    
+    
     var body: some View {
         NavigationView{
             List{
@@ -57,22 +60,22 @@ struct SettingsPage: View {
                 Section{
                     Toggle("使用 Material", isOn: $useMaterial)
                     
-                        HStack{
-                            if !useMaterial{
-                                Picker("颜色主题", selection: $plainFillTheme) {
-                                    ForEach(plainFillThemes, id: \.self) {
-                                        Text($0)
-                                    }
+                    HStack{
+                        if !useMaterial{
+                            Picker("颜色主题", selection: $plainFillTheme) {
+                                ForEach(plainFillThemes, id: \.self) {
+                                    Text($0)
                                 }
-                                //.pickerStyle(.segmented)
-                            } else{
-                                Picker("颜色主题", selection: .constant("Auto")) {
-                                    ForEach(["Auto"], id: \.self) {
-                                        Text($0)
-                                    }
+                            }
+                            //.pickerStyle(.segmented)
+                        } else{
+                            Picker("颜色主题", selection: .constant("Auto")) {
+                                ForEach(["Auto"], id: \.self) {
+                                    Text($0)
                                 }
                             }
                         }
+                    }
                     
                     Toggle("更大视图", isOn: $largerScale)
                     Toggle("更高饱和度", isOn: $useHighSaturationColors)
@@ -124,9 +127,26 @@ struct SettingsPage: View {
                 
                 Section{
                     NavigationLink(isActive: $isAdding, destination: addMonitor, label:{ Text("添加探针")})
+                    HStack {
+                        Spacer()
+                        removeButton(itemsName: "探针", buttonLabel: "删除所有探针", action: {ServerProvider.shared.removeAllMonitors()})
+                        Spacer()
+                    }
                 }header: {
                     Text("探针")
                         .headerProminence(.increased)
+                }
+                
+                // MARK: 删除
+                Section{
+                   
+                    HStack {
+                        Spacer()
+                        removeButton(itemsName: "数据", buttonLabel: "删除所有设置和数据", action: {clearUserDefaultsAndCache()})
+                        Spacer()
+                    }
+                }footer: {
+                    Text("所有操作不可恢复。")
                 }
             }
             .navigationTitle("设置")
@@ -146,7 +166,7 @@ struct SettingsPage: View {
         self.allowDepthEffectOfForeground = false
     }
     
-    @State var selectedType_raw = "HOTARU"
+    @State var selectedType = MonitorType.hotaru
     @State var showAfterAdd = true
     @State var label = ""
     @State var apiPath = "https://"
@@ -157,9 +177,9 @@ struct SettingsPage: View {
                 HStack{
                     Text("探针类型")
                     Spacer()
-                    Menu(selectedType_raw) {
+                    Menu(selectedType.rawValue) {
                         ForEach(MonitorType.allCases, id: \.rawValue){type in
-                            Button(type.rawValue){selectedType_raw = type.rawValue}
+                            Button(selectedType.rawValue){selectedType = type}
                         }
                         Button("更多服务接入中"){}
                     }
@@ -174,13 +194,15 @@ struct SettingsPage: View {
                 VStack(alignment: .leading){
                     Text("API地址")
                     TextEditor(text: $apiPath)
+                        .foregroundStyle(apiPath == "https://" ? .gray : .primary)
                         .multilineTextAlignment(.leading)
                         .frame(height: 100)
                 }
             }
             
             Button("添加"){
-                
+                ServerProvider.shared.addMonitor(name: label, url: apiPath, type: selectedType, show: showAfterAdd)
+                isAdding.toggle()
             }
         }
         .navigationTitle("添加探针")
@@ -188,6 +210,26 @@ struct SettingsPage: View {
             showAfterAdd = true
             label = ""
             apiPath = "https://"
+        }
+    }
+    
+    
+    @State private var showConfirmationAlert = false
+    func removeButton(itemsName: String, buttonLabel: String, action: @escaping () -> Void) -> some View{
+        
+        Button(buttonLabel){
+            showConfirmationAlert = true
+        }
+        .foregroundColor(.red)
+        .alert(isPresented: $showConfirmationAlert) {
+            Alert(
+                title: Text("确认删除"),
+                message: Text("此操作不可恢复，是否继续删除？"),
+                primaryButton: .destructive(Text("继续"), action: {
+                    action()
+                }),
+                secondaryButton: .cancel(Text("取消"))
+            )
         }
     }
 }
