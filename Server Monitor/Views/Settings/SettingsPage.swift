@@ -41,6 +41,7 @@ struct SettingsPage: View {
         }
     }
     
+    @AppStorage("AlwaysOnDisplay") var alwaysOnDisplay = true
     let imagePresentMethods = ["Plain", "Blur", "Material"]
     
     @Binding var showSettingsPage: Bool
@@ -126,6 +127,16 @@ struct SettingsPage: View {
                 }
                 
                 Section{
+                    Toggle("Always On", isOn: $alwaysOnDisplay)
+                }header: {
+                    Text("全局")
+                        .headerProminence(.increased)
+                        .onChange(of: alwaysOnDisplay){val in
+                            UIApplication.shared.isIdleTimerDisabled = val
+                        }
+                }
+                
+                Section{
                     NavigationLink(isActive: $isAdding, destination: addMonitor, label:{ Text("添加探针")})
                     HStack {
                         Spacer()
@@ -158,6 +169,7 @@ struct SettingsPage: View {
             }
         }
     }
+    
     func resetSettingsBackgroundSection(){
         self.bgImgLink = "https://api.dujin.org/bing/1920.php"
         self.bgImgRender = "Blur"

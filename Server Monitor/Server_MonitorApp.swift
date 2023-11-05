@@ -10,11 +10,16 @@ import CoreData
 
 @main
 struct Server_MonitorApp: App {
+    @AppStorage("AlwaysOnDisplay") var alwaysOnDisplay = true
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear(perform: {applyDefaultSettings()})
         }
+    }
+    func applyDefaultSettings(){
+        UIApplication.shared.isIdleTimerDisabled = alwaysOnDisplay
     }
 }
 

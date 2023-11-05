@@ -96,7 +96,7 @@ struct MainPage: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                
+                    
                 if bgImgRender == "Material"{
                     image.overlay{
                         Rectangle()
