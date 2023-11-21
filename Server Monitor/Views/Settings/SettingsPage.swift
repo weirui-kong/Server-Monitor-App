@@ -18,7 +18,7 @@ struct SettingsPage: View {
     let plainFillThemes = ["Light", "Dark"]
     @AppStorage("UseHighSaturationColors") var useHighSaturationColors = false
     
-    @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
+    @AppStorage("BackgroundImageLink") var bgImgLink: String = ""
     @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
     @AppStorage("BackgroundImageBlurRadius") var bgImgBlurRadius = 10.0
     @AppStorage("AllowDepthEffectOfBackground") var allowDepthEffectOfBackground: Bool = true{
@@ -91,7 +91,7 @@ struct SettingsPage: View {
                     HStack{
                         Text("图床地址")
                         Spacer(minLength: 50)
-                        TextField("图床地址", text: $bgImgLink, prompt: Text("图床地址"))
+                        TextField("图床地址", text: $bgImgLink, prompt: Text("图床地址，留空使用内置"))
                     }
                     Picker("ImagePresentMethod", selection: $bgImgRender) {
                         ForEach(imagePresentMethods, id: \.self) {
@@ -147,6 +147,9 @@ struct SettingsPage: View {
                     Text("探针")
                         .headerProminence(.increased)
                 }
+                // MARK: Discalimer
+                NavigationLink("Copyright Disclaimer", destination: CopyrightDisclaimer().navigationTitle("Copyright Disclaimer"))
+                
                 
                 // MARK: 删除
                 Section{
@@ -247,13 +250,7 @@ struct SettingsPage: View {
 }
 
 #Preview {
-    let container = NSPersistentContainer(name: "MonitorConfigs")
-    container.loadPersistentStores { description, error in
-        if let error = error {
-            fatalError("Unable to load persistent stores: \(error)")
-        }
-    }
+   
     return SettingsPage(showSettingsPage: .constant(true))
-        .environment(\.managedObjectContext, container.viewContext)
 }
 

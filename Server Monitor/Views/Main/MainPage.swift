@@ -83,7 +83,7 @@ struct MainPage: View {
         
     }
     
-    @AppStorage("BackgroundImageLink") var bgImgLink: String = "https://api.dujin.org/bing/1920.php"
+    @AppStorage("BackgroundImageLink") var bgImgLink: String = ""
     @AppStorage("UseMaterial") var useMaterial: Bool = true
     @AppStorage("BackgroundImageRender") var bgImgRender = "Blur"
     @AppStorage("BackgroundImageBlurRadius") var bgImgBlurRadius = 10.0
@@ -101,7 +101,23 @@ struct MainPage: View {
                     image.overlay{
                         Rectangle()
                             .foregroundStyle(.ultraThinMaterial)
-                            
+                    }
+                }else if bgImgRender == "Blur"{
+                    image.blur(radius: bgImgBlurRadius)
+                }else{
+                    image
+                }
+            }else{
+                let imgName = UIScreen.main.bounds.height > UIScreen.main.bounds.width
+                ? "xuyu-chi-_6KrHEpZ0Ro-unsplash-small"
+                : "robert-palmer-apcVUAd_o9M-unsplash"
+                
+                let image = Image(imgName)
+                
+                if bgImgRender == "Material"{
+                    image.overlay{
+                        Rectangle()
+                            .foregroundStyle(.ultraThinMaterial)
                     }
                 }else if bgImgRender == "Blur"{
                     image.blur(radius: bgImgBlurRadius)

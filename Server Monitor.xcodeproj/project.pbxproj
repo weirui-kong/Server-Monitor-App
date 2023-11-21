@@ -18,6 +18,7 @@
 		0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B642AE0181D00C369AD /* MotionCapture.swift */; };
 		0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */; };
 		0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */; };
+		0AD5A9E82B0C7BAA00D46DBE /* CopyrightDisclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5A9E72B0C7BAA00D46DBE /* CopyrightDisclaimer.swift */; };
 		0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */; };
 		0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C42AAAF89B001F0D8C /* DataFactory.swift */; };
 		0AE022C82AAAF996001F0D8C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE022C72AAAF996001F0D8C /* Alamofire */; };
@@ -43,6 +44,7 @@
 		0AB52B642AE0181D00C369AD /* MotionCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCapture.swift; sourceTree = "<group>"; };
 		0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDeviceOrientation.swift; sourceTree = "<group>"; };
 		0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackground.swift; sourceTree = "<group>"; };
+		0AD5A9E72B0C7BAA00D46DBE /* CopyrightDisclaimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightDisclaimer.swift; sourceTree = "<group>"; };
 		0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotaruData.swift; sourceTree = "<group>"; };
 		0AE022C42AAAF89B001F0D8C /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		0AE022CA2AAAF9D3001F0D8C /* UniversalServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalServer.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */,
+				0AD5A9E72B0C7BAA00D46DBE /* CopyrightDisclaimer.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,
 				0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */,
 				0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */,
+				0AD5A9E82B0C7BAA00D46DBE /* CopyrightDisclaimer.swift in Sources */,
 				0AE022D22AAAFFF6001F0D8C /* ServerProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +519,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = versionRange;
+				maximumVersion = 8.0.0;
 				minimumVersion = 7.9.1;
 			};
 		};
@@ -523,7 +528,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = versionRange;
+				maximumVersion = 6.0.0;
 				minimumVersion = 5.8.0;
 			};
 		};
