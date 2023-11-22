@@ -110,7 +110,7 @@ struct MainPage: View {
             }else{
                 let imgName = UIScreen.main.bounds.height > UIScreen.main.bounds.width
                 ? "xuyu-chi-_6KrHEpZ0Ro-unsplash-small"
-                : "robert-palmer-apcVUAd_o9M-unsplash"
+                : "erol-ahmed-d3pTF3r_hwY-unsplash"
                 
                 let image = Image(imgName)
                 
