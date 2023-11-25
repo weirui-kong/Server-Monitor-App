@@ -7,12 +7,14 @@
 
 import SwiftUI
 import CoreData
+import Anitom
 struct ContentView: View {
     @State var showSettings = false
     @Environment(\.managedObjectContext) var viewContext
     @ObservedObject var serverProvider = ServerProvider.shared
     
     @AppStorage("ShowServerCount") var showServerCount = true
+    
     
     var body: some View {
         ZStack{
@@ -30,6 +32,7 @@ struct ContentView: View {
                     Spacer()
                     addButton()
                         .padding()
+                       
                 }
             }
         }

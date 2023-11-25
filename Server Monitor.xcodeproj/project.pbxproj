@@ -15,6 +15,7 @@
 		0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */; };
 		0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */; };
 		0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A86E0542AAB2DDD00D11461 /* Kingfisher */; };
+		0A9933692B1261A8004846B5 /* Anitom in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9933682B1261A8004846B5 /* Anitom */; };
 		0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B642AE0181D00C369AD /* MotionCapture.swift */; };
 		0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */; };
 		0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */; };
@@ -61,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9933692B1261A8004846B5 /* Anitom in Frameworks */,
 				0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */,
 				0AE022C82AAAF996001F0D8C /* Alamofire in Frameworks */,
 			);
@@ -212,6 +214,7 @@
 			packageProductDependencies = (
 				0AE022C72AAAF996001F0D8C /* Alamofire */,
 				0A86E0542AAB2DDD00D11461 /* Kingfisher */,
+				0A9933682B1261A8004846B5 /* Anitom */,
 			);
 			productName = "Server Monitor";
 			productReference = 0A86D0E42AAAF20E00E2B60E /* Server Monitor.app */;
@@ -244,6 +247,7 @@
 			packageReferences = (
 				0AE022C62AAAF996001F0D8C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0A86E0532AAB2DDD00D11461 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0A9933672B1261A8004846B5 /* XCRemoteSwiftPackageReference "Anitom" */,
 			);
 			productRefGroup = 0A86D0E52AAAF20E00E2B60E /* Products */;
 			projectDirPath = "";
@@ -524,6 +528,14 @@
 				minimumVersion = 7.9.1;
 			};
 		};
+		0A9933672B1261A8004846B5 /* XCRemoteSwiftPackageReference "Anitom" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weirui-kong/Anitom";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 		0AE022C62AAAF996001F0D8C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -540,6 +552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A86E0532AAB2DDD00D11461 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		0A9933682B1261A8004846B5 /* Anitom */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A9933672B1261A8004846B5 /* XCRemoteSwiftPackageReference "Anitom" */;
+			productName = Anitom;
 		};
 		0AE022C72AAAF996001F0D8C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -14,13 +14,11 @@ struct MainPage: View {
     @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
 
     @ObservedObject var serverProvider = ServerProvider.shared
-    
-    
     @StateObject private var motion = MotionManager.shared
     
     @AppStorage("AllowDepthEffectOfBackground") var allowDepthEffectOfBackground: Bool = true
     @AppStorage("AllowDepthEffectOfForeground") var allowDepthEffectOfForeground: Bool = false
-
+    
     var body: some View {
         NavigationView{
             ScrollView{
@@ -47,6 +45,7 @@ struct MainPage: View {
                                     ForEach(group.server, id: \.name){server in
                                         ServerCardView(server: server, largerScale: largerScale)
                                             .padding(largerScale ? 5 : 0)
+                                            
                                             
                                     }
                                 }
