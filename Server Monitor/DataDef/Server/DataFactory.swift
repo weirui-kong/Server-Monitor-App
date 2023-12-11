@@ -28,12 +28,12 @@ class ServerDataFactory {
                         networkIn: server.networkIn,
                         networkOut: server.networkOut,
                         cpuPercent: server.cpu,
-                        memoryTotal: server.memoryTotal == nil ? nil : server.memoryTotal! * 1024,
-                        memoryUsed: server.memoryUsed == nil ? nil : server.memoryUsed! * 1024,
-                        swapTotal: server.swapTotal == nil ? nil : server.swapTotal! * 1024,
-                        swapUsed: server.swapUsed == nil ? nil : server.swapUsed! * 1024,
-                        hddTotal: server.hddTotal == nil ? nil : server.hddTotal! * 1024 * 1024,
-                        hddUsed: server.hddUsed == nil ? nil : server.hddUsed! * 1024 * 1024,
+                        memoryTotal: server.memoryTotal == nil ? nil : server.memoryTotal! * 1000,
+                        memoryUsed: server.memoryUsed == nil ? nil : server.memoryUsed! * 1000,
+                        swapTotal: server.swapTotal == nil ? nil : server.swapTotal! * 1000,
+                        swapUsed: server.swapUsed == nil ? nil : server.swapUsed! * 1000,
+                        hddTotal: server.hddTotal == nil ? nil : server.hddTotal! * 1000 * 1000,
+                        hddUsed: server.hddUsed == nil ? nil : server.hddUsed! * 1000 * 1000,
                         custom: server.custom,
                         region: server.region
                     )
