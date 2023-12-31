@@ -15,6 +15,7 @@
 		0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */; };
 		0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */; };
 		0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A86E0542AAB2DDD00D11461 /* Kingfisher */; };
+		0A93BFE32B418D42005D8D9B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A93BFE22B418D42005D8D9B /* Dictionary.swift */; };
 		0A9933692B1261A8004846B5 /* Anitom in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9933682B1261A8004846B5 /* Anitom */; };
 		0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B642AE0181D00C369AD /* MotionCapture.swift */; };
 		0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */; };
@@ -42,6 +43,7 @@
 		0A86D0EF2AAAF21300E2B60E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A86D0F72AAAF2DA00E2B60E /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		0A86D0F92AAAF2EB00E2B60E /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		0A93BFE22B418D42005D8D9B /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		0AB52B642AE0181D00C369AD /* MotionCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionCapture.swift; sourceTree = "<group>"; };
 		0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindDeviceOrientation.swift; sourceTree = "<group>"; };
 		0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackground.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				0AB52B642AE0181D00C369AD /* MotionCapture.swift */,
 				0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */,
 				0A552EE82AE3F7FE00FEA576 /* Reset.swift */,
+				0A93BFE22B418D42005D8D9B /* Dictionary.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				0A552EE92AE3F7FE00FEA576 /* Reset.swift in Sources */,
 				0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */,
 				0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */,
+				0A93BFE32B418D42005D8D9B /* Dictionary.swift in Sources */,
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,
 				0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */,
 				0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */,
@@ -438,6 +442,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;

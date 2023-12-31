@@ -45,4 +45,16 @@ class ServerDataFactory {
             return nil
         }
     }
+    
+    static func convertStringifiedJSONToDictionary(from data: Data) -> [String: Any]? {
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                return json
+            }
+        } catch {
+            print("Error converting stringified JSON to Dictionary: \(error)")
+        }
+        
+        return nil
+    }
 }

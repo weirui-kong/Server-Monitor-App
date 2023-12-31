@@ -62,7 +62,10 @@ struct MainPage: View {
                                 Spacer()
                                 Text("上次更新：\(convertTimestampToDateString(timestamp: TimeInterval(group.lastUpdated)))")
                                     .font(.caption.monospaced())
-                                    .foregroundStyle(plainFillTheme == "Dark" ? .black : .white)
+                                    .foregroundColor(.white)
+                                    .colorFillBackground(padding: 5)
+                                    
+                                    //.foregroundStyle(plainFillTheme == "Dark" ? .black : .white)
                             }
                         }
                     }

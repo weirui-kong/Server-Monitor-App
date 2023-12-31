@@ -10,7 +10,7 @@ import Anitom
 struct ServerCardView: View {
     
     @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
-    @StateObject var inj = AnitomInjector()
+    //@StateObject var inj = AnitomInjector()
     
     var server: UniversalServer
     var largerScale = false
@@ -33,7 +33,7 @@ struct ServerCardView: View {
         .foregroundColor(.white.opacity(0.8))
         .padding()
         .materialBackground(overrideColor: plainFillTheme == "Dark" ? .black : .white)
-        .onHoverFloating(inj: inj, duration: 0.3, dropShaddow: false, scaleMargin: 0)
+        //.onHoverFloating(inj: inj, duration: 0.3, dropShaddow: false, scaleMargin: 0)
     }
     
     private func basicInfo() -> some View{

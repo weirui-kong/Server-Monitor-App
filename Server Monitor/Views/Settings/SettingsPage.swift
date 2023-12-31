@@ -10,6 +10,8 @@ import CoreData
 struct SettingsPage: View {
     @Environment(\.managedObjectContext) var viewContext
     
+    @ObservedObject var serverProvider = ServerProvider.shared
+    
     @AppStorage("ShowServerCount") var showServerCount = true
     
     @AppStorage("UseMaterial") var useMaterial: Bool = true
@@ -137,6 +139,10 @@ struct SettingsPage: View {
                 }
                 
                 Section{
+                    ForEach(ServerProvider.monitors, id: \.0){monitor in
+                        NavigationLink(destination: monitorDetail(name: monitor.0, url: monitor.1, type: monitor.2, show: monitor.3), label: {Text(monitor.0)})
+                        
+                    }
                     NavigationLink(isActive: $isAdding, destination: addMonitor, label:{ Text("添加探针")})
                     HStack {
                         Spacer()
@@ -153,7 +159,7 @@ struct SettingsPage: View {
                 
                 // MARK: 删除
                 Section{
-                   
+                    
                     HStack {
                         Spacer()
                         removeButton(itemsName: "数据", buttonLabel: "删除所有设置和数据", action: {clearUserDefaultsAndCache()})
@@ -228,6 +234,38 @@ struct SettingsPage: View {
         }
     }
     
+    @State private var monitorDetailAPIRequestSampleText: String = "{}"
+    func monitorDetail(name: String, url: String, type: MonitorType, show: Bool) -> some View{
+        ScrollView{
+            
+            VStack(alignment: .leading){
+                HStack{
+                    Text(type.rawValue)
+                        .colorFillBackground(padding: 5, overrideColor: .blue)
+                    Text(show ? "显示" : "隐藏")
+                        .colorFillBackground(padding: 5, overrideColor: show ? .green : .red)
+                    Spacer()
+                }
+                Divider()
+                Section("JSON结果"){
+                    Text(monitorDetailAPIRequestSampleText)
+                        .multilineTextAlignment(.leading)
+                        .font(.system(.body, design: .monospaced))
+                        .onAppear{
+                            NetworkManager.shared.sendRequest(path: url){data in
+                                let dic = ServerDataFactory.convertStringifiedJSONToDictionary(from: data)
+                                let str = dic?.showJsonString
+                                DispatchQueue.main.async {
+                                    monitorDetailAPIRequestSampleText = str ?? "{}"
+                                }
+                            }
+                        }
+                }
+            }
+            .padding()
+            
+        }.navigationTitle(name)
+    }
     
     @State private var showConfirmationAlert = false
     func removeButton(itemsName: String, buttonLabel: String, action: @escaping () -> Void) -> some View{
@@ -250,7 +288,7 @@ struct SettingsPage: View {
 }
 
 #Preview {
-   
+    
     return SettingsPage(showSettingsPage: .constant(true))
 }
 

@@ -70,4 +70,20 @@ class NetworkManager: ObservableObject {
         
         return nil
     }
+    
+    /// Convert Data to Dictionary
+    /// - Parameter data: The data to convert
+    /// - Returns: The converted dictionary
+    func convertDataToDictionary(data: Data) -> [String: Any]? {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            if let dictionary = jsonObject as? [String: Any] {
+                return dictionary
+            }
+        } catch {
+            print("Error converting data to Dictionary: \(error)")
+        }
+        
+        return nil
+    }
 }

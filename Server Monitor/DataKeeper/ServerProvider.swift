@@ -145,4 +145,18 @@ class ServerProvider: ObservableObject{
         // 保存更新后的数据到 UserDefaults
         saveMonitorsToUserDefaults()
     }
+    
+    func removeMonitorByName(_ name: String) {
+        // 查找要删除的监视器在 monitors 数组中的索引
+        if let index = ServerProvider.monitors.firstIndex(where: { $0.0 == name }) {
+            // 找到了要删除的监视器，进行删除操作
+            ServerProvider.monitors.remove(at: index)
+            
+            // 保存更新后的数据到 UserDefaults
+            saveMonitorsToUserDefaults()
+        } else {
+            // 没有找到要删除的监视器
+            print("未找到名称为 \(name) 的监视器")
+        }
+    }
 }
