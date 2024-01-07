@@ -7,6 +7,8 @@
 
 import Foundation
 import Alamofire
+import Starscream
+
 
 /**
  在这里发起网络请求。
@@ -52,8 +54,7 @@ class NetworkManager: ObservableObject {
             }
         }
     }
-    
-    
+
     
     /// Convert Data to NSDictionary
     /// - Parameter data: The data to convert

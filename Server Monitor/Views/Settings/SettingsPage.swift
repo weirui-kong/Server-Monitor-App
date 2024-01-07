@@ -140,7 +140,7 @@ struct SettingsPage: View {
                 
                 Section{
                     ForEach(ServerProvider.monitors, id: \.0){monitor in
-                        NavigationLink(destination: monitorDetail(name: monitor.0, url: monitor.1, type: monitor.2, show: monitor.3), label: {Text(monitor.0)})
+                        NavigationLink(destination: monitorDetail(name: monitor.0, url: monitor.1, method: monitor.2, type: monitor.3, show: monitor.4), label: {Text(monitor.0)})
                         
                     }
                     NavigationLink(isActive: $isAdding, destination: addMonitor, label:{ Text("添加探针")})
@@ -187,10 +187,12 @@ struct SettingsPage: View {
         self.allowDepthEffectOfForeground = false
     }
     
-    @State var selectedType = MonitorType.hotaru
+    @State var selectedType: MonitorType = MonitorType.hotaru
+    @State var selectedProto: String = MonitorType.defaultProto
     @State var showAfterAdd = true
     @State var label = ""
     @State var apiPath = "https://"
+    @State var apiPathPrefix = "https://"
     @State var isAdding = false
     func addMonitor() -> some View{
         List{
@@ -200,9 +202,25 @@ struct SettingsPage: View {
                     Spacer()
                     Menu(selectedType.rawValue) {
                         ForEach(MonitorType.allCases, id: \.rawValue){type in
-                            Button(selectedType.rawValue){selectedType = type}
+                            Button(type.rawValue){
+                                selectedType = type
+                                selectedProto = type.getDefaultRequestProto
+                                apiPath = type.getDefaultRequestProtoPrefix
+                                apiPathPrefix = type.getDefaultRequestProtoPrefix
+                            }
                         }
                         Button("更多服务接入中"){}
+                    }
+                }
+                HStack{
+                    Text("请求协议")
+                    Spacer()
+                    Menu(selectedProto) {
+                        ForEach(MonitorType.supportedProtos, id: \.self){proto in
+//                            Button(proto){
+//                                selectedProto = proto
+//                            }
+                        }
                     }
                 }
                 Toggle("主页显示", isOn: $showAfterAdd)
@@ -215,14 +233,14 @@ struct SettingsPage: View {
                 VStack(alignment: .leading){
                     Text("API地址")
                     TextEditor(text: $apiPath)
-                        .foregroundStyle(apiPath == "https://" ? .gray : .primary)
+                        .foregroundStyle(apiPath == apiPathPrefix ? .gray : .primary)
                         .multilineTextAlignment(.leading)
                         .frame(height: 100)
                 }
             }
             
             Button("添加"){
-                ServerProvider.shared.addMonitor(name: label, url: apiPath, type: selectedType, show: showAfterAdd)
+                ServerProvider.shared.addMonitor(name: label, url: apiPath, method: selectedProto, type: selectedType, show: showAfterAdd)
                 isAdding.toggle()
             }
         }
@@ -235,12 +253,14 @@ struct SettingsPage: View {
     }
     
     @State private var monitorDetailAPIRequestSampleText: String = "{}"
-    func monitorDetail(name: String, url: String, type: MonitorType, show: Bool) -> some View{
+    func monitorDetail(name: String, url: String, method: String, type: MonitorType, show: Bool) -> some View{
         ScrollView{
             
             VStack(alignment: .leading){
                 HStack{
                     Text(type.rawValue)
+                        .colorFillBackground(padding: 5, overrideColor: .blue)
+                    Text(method)
                         .colorFillBackground(padding: 5, overrideColor: .blue)
                     Text(show ? "显示" : "隐藏")
                         .colorFillBackground(padding: 5, overrideColor: show ? .green : .red)

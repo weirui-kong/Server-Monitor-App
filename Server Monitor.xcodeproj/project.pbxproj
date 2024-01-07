@@ -20,6 +20,7 @@
 		0AB52B652AE0181D00C369AD /* MotionCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B642AE0181D00C369AD /* MotionCapture.swift */; };
 		0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */; };
 		0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB54D712ABBEC4D00D2C255 /* RoundedBackground.swift */; };
+		0ACAEE2F2B4AB14A0094A6C0 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 0ACAEE2E2B4AB14A0094A6C0 /* Starscream */; };
 		0AD5A9E82B0C7BAA00D46DBE /* CopyrightDisclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD5A9E72B0C7BAA00D46DBE /* CopyrightDisclaimer.swift */; };
 		0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C22AAAF7E9001F0D8C /* HotaruData.swift */; };
 		0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022C42AAAF89B001F0D8C /* DataFactory.swift */; };
@@ -67,6 +68,7 @@
 				0A9933692B1261A8004846B5 /* Anitom in Frameworks */,
 				0A86E0552AAB2DDD00D11461 /* Kingfisher in Frameworks */,
 				0AE022C82AAAF996001F0D8C /* Alamofire in Frameworks */,
+				0ACAEE2F2B4AB14A0094A6C0 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 				0AE022C72AAAF996001F0D8C /* Alamofire */,
 				0A86E0542AAB2DDD00D11461 /* Kingfisher */,
 				0A9933682B1261A8004846B5 /* Anitom */,
+				0ACAEE2E2B4AB14A0094A6C0 /* Starscream */,
 			);
 			productName = "Server Monitor";
 			productReference = 0A86D0E42AAAF20E00E2B60E /* Server Monitor.app */;
@@ -251,6 +254,7 @@
 				0AE022C62AAAF996001F0D8C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0A86E0532AAB2DDD00D11461 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0A9933672B1261A8004846B5 /* XCRemoteSwiftPackageReference "Anitom" */,
+				0ACAEE2D2B4AB14A0094A6C0 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 0A86D0E52AAAF20E00E2B60E /* Products */;
 			projectDirPath = "";
@@ -541,6 +545,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		0ACAEE2D2B4AB14A0094A6C0 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.6;
+			};
+		};
 		0AE022C62AAAF996001F0D8C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -562,6 +574,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A9933672B1261A8004846B5 /* XCRemoteSwiftPackageReference "Anitom" */;
 			productName = Anitom;
+		};
+		0ACAEE2E2B4AB14A0094A6C0 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0ACAEE2D2B4AB14A0094A6C0 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 		0AE022C72AAAF996001F0D8C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
