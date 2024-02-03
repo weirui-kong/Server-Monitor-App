@@ -232,12 +232,42 @@ struct SettingsPage: View {
                 }
                 VStack(alignment: .leading){
                     Text("API地址")
-                    TextEditor(text: $apiPath)
-                        .foregroundStyle(apiPath == apiPathPrefix ? .gray : .primary)
-                        .multilineTextAlignment(.leading)
-                        .frame(height: 100)
+                    ZStack{
+                        TextEditor(text: $apiPath)
+                            .foregroundStyle(apiPath == apiPathPrefix ? .gray : .primary)
+                            .multilineTextAlignment(.leading)
+                            .frame(height: 100)
+                        VStack{
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                Button("载入演示"){
+                                    apiPath = selectedType.getRequestApiSample
+                                    label = randomEmoji() + " " + selectedType.rawValue
+                                }.font(.caption)
+                            }
+                        }
+                    }
+                }
+                ScrollView(.horizontal){
+                    HStack{
+                        Text(selectedType.getDefaultRequestProto)
+                            .colorFillBackground(padding: 5, overrideColor: .blue)
+                        
+                        ForEach(selectedType.getFeatures, id: \.hashValue){ feature in
+                            Text(feature)
+                                .colorFillBackground(padding: 5, overrideColor: .green)
+                        }
+                        
+                    }
+                }
+            } footer: {
+                VStack{
+                    Text("\(selectedType.rawValue)是开源项目\(selectedType.getOpensourceProjectName)，它的开源地址是\(selectedType.getOpensourceOrigin).")
+                   
                 }
             }
+            
             
             Button("添加"){
                 ServerProvider.shared.addMonitor(name: label, url: apiPath, method: selectedProto, type: selectedType, show: showAfterAdd)
@@ -262,6 +292,10 @@ struct SettingsPage: View {
                         .colorFillBackground(padding: 5, overrideColor: .blue)
                     Text(method)
                         .colorFillBackground(padding: 5, overrideColor: .blue)
+                    ForEach(type.getFeatures, id: \.hashValue){ feature in
+                        Text(feature)
+                            .colorFillBackground(padding: 5, overrideColor: .gray)
+                    }
                     Text(show ? "显示" : "隐藏")
                         .colorFillBackground(padding: 5, overrideColor: show ? .green : .red)
                     Spacer()

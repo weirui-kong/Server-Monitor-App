@@ -32,6 +32,8 @@
 		0AE022D42AAB0006001F0D8C /* UniversalServerGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022D32AAB0006001F0D8C /* UniversalServerGroup.swift */; };
 		0AE022D62AAB0D8F001F0D8C /* ServerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE022D52AAB0D8F001F0D8C /* ServerCardView.swift */; };
 		0AE022D82AAB1136001F0D8C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0AE022D72AAB1136001F0D8C /* README.md */; };
+		0AE6D3932B6E232400E09E09 /* CpplaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE6D3922B6E232400E09E09 /* CpplaData.swift */; };
+		0AE6D3952B6E2CD400E09E09 /* RandomSomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE6D3942B6E2CD400E09E09 /* RandomSomething.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		0AE022D32AAB0006001F0D8C /* UniversalServerGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalServerGroup.swift; sourceTree = "<group>"; };
 		0AE022D52AAB0D8F001F0D8C /* ServerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardView.swift; sourceTree = "<group>"; };
 		0AE022D72AAB1136001F0D8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		0AE6D3922B6E232400E09E09 /* CpplaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpplaData.swift; sourceTree = "<group>"; };
+		0AE6D3942B6E2CD400E09E09 /* RandomSomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSomething.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				0AB52B662AE02B9200C369AD /* FindDeviceOrientation.swift */,
 				0A552EE82AE3F7FE00FEA576 /* Reset.swift */,
 				0A93BFE22B418D42005D8D9B /* Dictionary.swift */,
+				0AE6D3942B6E2CD400E09E09 /* RandomSomething.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				0AE022D32AAB0006001F0D8C /* UniversalServerGroup.swift */,
 				0AE022CA2AAAF9D3001F0D8C /* UniversalServer.swift */,
 				0AE022C42AAAF89B001F0D8C /* DataFactory.swift */,
+				0AE6D3912B6E22CD00E09E09 /* Cppla */,
 				0AC20B872AAAF72C004D2318 /* Hotaru */,
 			);
 			path = Server;
@@ -198,6 +204,14 @@
 				0AE022D12AAAFFF6001F0D8C /* ServerProvider.swift */,
 			);
 			path = DataKeeper;
+			sourceTree = "<group>";
+		};
+		0AE6D3912B6E22CD00E09E09 /* Cppla */ = {
+			isa = PBXGroup;
+			children = (
+				0AE6D3922B6E232400E09E09 /* CpplaData.swift */,
+			);
+			path = Cppla;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +304,13 @@
 				0A86D0E82AAAF20E00E2B60E /* Server_MonitorApp.swift in Sources */,
 				0AE022CB2AAAF9D3001F0D8C /* UniversalServer.swift in Sources */,
 				0A86D0F82AAAF2DA00E2B60E /* MainPage.swift in Sources */,
+				0AE6D3952B6E2CD400E09E09 /* RandomSomething.swift in Sources */,
 				0AE022CE2AAAFDB0001F0D8C /* NetworkManager.swift in Sources */,
 				0AE022C32AAAF7E9001F0D8C /* HotaruData.swift in Sources */,
 				0A552EE92AE3F7FE00FEA576 /* Reset.swift in Sources */,
 				0AB52B672AE02B9200C369AD /* FindDeviceOrientation.swift in Sources */,
 				0A86D0FA2AAAF2EB00E2B60E /* SettingsPage.swift in Sources */,
+				0AE6D3932B6E232400E09E09 /* CpplaData.swift in Sources */,
 				0A93BFE32B418D42005D8D9B /* Dictionary.swift in Sources */,
 				0AE022C52AAAF89B001F0D8C /* DataFactory.swift in Sources */,
 				0AB54D722ABBEC4D00D2C255 /* RoundedBackground.swift in Sources */,

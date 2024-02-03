@@ -42,7 +42,7 @@ struct MainPage: View {
                                     maximum: largerScale ? 500 : 400
                                 ))]){
                                     
-                                    ForEach(group.server, id: \.name){server in
+                                    ForEach(group.server, id: \.id){server in
                                         ServerCardView(server: server, largerScale: largerScale)
                                             .padding(largerScale ? 5 : 0)
                                             

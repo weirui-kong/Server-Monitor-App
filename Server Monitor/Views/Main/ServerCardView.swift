@@ -186,7 +186,8 @@ struct ServerCardView: View {
             }
         }
         
-        return flagEmoji.isEmpty ? "🚩" : flagEmoji
+        //return flagEmoji.isEmpty ? "🚩" : flagEmoji
+        return flagEmoji
     }
 }
 

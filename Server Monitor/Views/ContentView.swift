@@ -70,12 +70,12 @@ struct ContentView: View {
 }
 
 #Preview {
-    let container = NSPersistentContainer(name: "MonitorConfigs")
-    container.loadPersistentStores { description, error in
-        if let error = error {
-            fatalError("Unable to load persistent stores: \(error)")
-        }
-    }
+//    let container = NSPersistentContainer(name: "MonitorConfigs")
+//    container.loadPersistentStores { description, error in
+//        if let error = error {
+//            fatalError("Unable to load persistent stores: \(error)")
+//        }
+//    }
     return ContentView()
-        .environment(\.managedObjectContext, container.viewContext)
+        //.environment(\.managedObjectContext, container.viewContext)
 }
