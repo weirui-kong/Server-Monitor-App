@@ -7,8 +7,16 @@ Server Status Mobile is a light-weight application providing you with real-time 
 
 # Mockup
 
-## iPad Pro 12.9"
-![ipad](./img/ipad.png)
-
 ## iPhone 13 Pro Max
-![iphone](./img/iphone.png)
+
+|  iOS(Server Status)   | iOS(Server Status-Hotaru)  |
+|  ----  | ----  |
+| ![iphone](./img/iphone.png) | ![iphone2](./img/iphone2.png) |
+
+## iPad Pro 12.9"
+
+|  iPadOS(Server Status)|
+|  ----  | 
+| ![ipad](./img/ipad.png) |
+
+

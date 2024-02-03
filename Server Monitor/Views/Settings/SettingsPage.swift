@@ -287,18 +287,20 @@ struct SettingsPage: View {
         ScrollView{
             
             VStack(alignment: .leading){
-                HStack{
-                    Text(type.rawValue)
-                        .colorFillBackground(padding: 5, overrideColor: .blue)
-                    Text(method)
-                        .colorFillBackground(padding: 5, overrideColor: .blue)
-                    ForEach(type.getFeatures, id: \.hashValue){ feature in
-                        Text(feature)
-                            .colorFillBackground(padding: 5, overrideColor: .gray)
+                ScrollView(.horizontal){
+                    HStack{
+                        Text(type.rawValue)
+                            .colorFillBackground(padding: 5, overrideColor: .blue)
+                        Text(method)
+                            .colorFillBackground(padding: 5, overrideColor: .blue)
+                        ForEach(type.getFeatures, id: \.hashValue){ feature in
+                            Text(feature)
+                                .colorFillBackground(padding: 5, overrideColor: .gray)
+                        }
+                        Text(show ? "显示" : "隐藏")
+                            .colorFillBackground(padding: 5, overrideColor: show ? .green : .red)
+                        Spacer()
                     }
-                    Text(show ? "显示" : "隐藏")
-                        .colorFillBackground(padding: 5, overrideColor: show ? .green : .red)
-                    Spacer()
                 }
                 Divider()
                 Section("JSON结果"){

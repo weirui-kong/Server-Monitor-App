@@ -30,9 +30,9 @@ struct DataDef_Cppla: Codable {
     var ping10010: Int? // 联通线路丢包，可选
     var ping189: Int? // 电信线路丢包，可选
     var ping10086: Int? // 移动线路丢包，可选
-    var time10010: Int? // 联通线路延迟，可选
-    var time189: Int? // 电信线路延迟，可选
-    var time10086: Int? // 移动线路延迟，可选
+    var latency10010: Int? // 联通线路延迟，可选
+    var latency189: Int? // 电信线路延迟，可选
+    var latency10086: Int? // 移动线路延迟，可选
     var tcpCount: Int? // TCP连接数，可选
     var udpCount: Int? // UDP连接数，可选
     var processCount: Int? // 进程数，可选
@@ -51,7 +51,8 @@ struct DataDef_Cppla: Codable {
         case hddTotal = "hdd_total", hddUsed = "hdd_used"
         case custom
         case location
-        case ping10010, ping189, ping10086, time10010, time189, time10086, tcpCount, udpCount, processCount, threadCount, ioRead, ioWrite
+        case ping10010 = "ping_10010", ping189 = "ping_189", ping10086 = "ping_10086", latency10010 = "time_10010", latency189 = "time_189", latency10086 = "time_10086"
+        case tcpCount, udpCount, processCount, threadCount, ioRead, ioWrite
     }
 }
 

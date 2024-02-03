@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Anitom
+import Kingfisher
 struct ServerCardView: View {
     
     @AppStorage("PlainFillTheme") var plainFillTheme = "Dark"
@@ -14,10 +15,19 @@ struct ServerCardView: View {
     
     var server: UniversalServer
     var largerScale = false
+    var supportDomesticPing: Bool
+    var supportConnectionCount: Bool
+    var supportProcessCount: Bool
+    var supportIoRw: Bool
+    @AppStorage("ShowIspLogo") var showIspLogo = true
     var body: some View {
         VStack{
             basicInfo()
             netInfo()
+            if supportDomesticPing{
+                ispPingInfo()
+            }
+            
             if server.online{
                 loadBars()
             }else{
@@ -91,6 +101,47 @@ struct ServerCardView: View {
             }.font(largerScale ? .body : .footnote)
         }
     }
+    
+    func carrierIdentifier(code: String, scale: CGFloat = 1.0) -> some View{
+        Group{
+            if showIspLogo && (onlineImgLink(searchBy: code) != nil){
+                KFImage(URL(string: onlineImgLink(searchBy: code)!)!)
+                    .resizable()
+                    .scaledToFill()
+                    .scaleEffect(scale)
+                    .frame(height: largerScale ? 60 : 40)
+                    .opacity(0.8)
+                    
+            }else{
+                Text(code)
+                    .colorFillBackground()
+            }
+        }
+    }
+    
+    private func ispPingInfo() -> some View{
+        HStack{
+            VStack{
+                carrierIdentifier(code: "CM")
+                Text("\(server.ping10086 ?? -1)%/\(server.latency10086 ?? -1)ms")
+                    .font(largerScale ? .body : .footnote)
+            }.colorFillBackground(padding: 5, opacity: 0.8, overrideColor: .white)
+            Spacer()
+            VStack{
+                carrierIdentifier(code: "CT")
+                Text("\(server.ping189 ?? -1)%/\(server.latency189 ?? -1)ms")
+                    .font(largerScale ? .body : .footnote)
+            }.colorFillBackground(padding: 5, opacity: 0.8, overrideColor: .white)
+            Spacer()
+            VStack{
+                carrierIdentifier(code: "CU", scale: 0.8)
+                Text("\(server.ping10010 ?? -1)%/\(server.latency10010 ?? -1)ms")
+                    .font(largerScale ? .body : .footnote)
+            }.colorFillBackground(padding: 5, opacity: 0.8, overrideColor: .white)
+        }
+        
+    }
+    
     
     private func loadBars() -> some View{
     
@@ -210,28 +261,30 @@ extension Color {
 }
 
 #Preview {
-    ServerCardView(server: UniversalServer(
-        name: "My Server",
-        type: "Web Server",
-        host: "example.com",
-        location: "Houston",
-        online4: true,
-        online6: false,
-        uptime: "10 days",
-        load: 1.5,
-        networkRx: 100,
-        networkTx: 50,
-        networkIn: 3452,
-        networkOut: 1244,
-        cpuPercent: 53,
-        memoryTotal: 8192,
-        memoryUsed: 2048,
-        swapTotal: 4096,
-        swapUsed: 512,
-        hddTotal: 100000,
-        hddUsed: 50000,
-        custom: "Custom info",
-        region: "US"
-    ), largerScale: true)
+//    ServerCardView(server: UniversalServer(
+//        name: "My Server",
+//        type: "Web Server",
+//        host: "example.com",
+//        location: "Houston",
+//        online4: true,
+//        online6: false,
+//        uptime: "10 days",
+//        load: 1.5,
+//        networkRx: 100,
+//        networkTx: 50,
+//        networkIn: 3452,
+//        networkOut: 1244,
+//        cpuPercent: 53,
+//        memoryTotal: 8192,
+//        memoryUsed: 2048,
+//        swapTotal: 4096,
+//        swapUsed: 512,
+//        hddTotal: 100000,
+//        hddUsed: 50000,
+//        custom: "Custom info",
+//        region: "US"
+//    ), largerScale: true)
+    ServerCardView(server: UniversalServer(name: "香港", type: "KVM", host: "", location: "HK", online4: true, online6: false, uptime: "106 天", load: 0.27, networkRx: 17872, networkTx: 19702, networkIn: 258123837125, networkOut: 183551862448, cpuPercent: 3, memoryTotal: 4013656, memoryUsed: 587812, swapTotal: 998396, swapUsed: 280700, hddTotal: 59204, hddUsed: 29706, custom: "", region: "", ping10010: 0, ping189: 0, ping10086: 12, latency10010: 12, latency189: 48, latency10086: 32, tcpCount: 16, udpCount: 200, processCount: 422, threadCount: 3221, ioRead: 0, ioWrite: 16384), largerScale: false, supportDomesticPing: true, supportConnectionCount: true, supportProcessCount: true, supportIoRw: true)
+        .background(Color.black)
 }
  

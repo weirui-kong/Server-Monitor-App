@@ -91,4 +91,36 @@ enum MonitorType: String, CaseIterable{
             return []
         }
     }
+    
+    var supportDomesticPing: Bool{
+        switch self {
+        case .hotaru: return false
+        case .server_status: return true
+        case .nezha: return false
+        }
+    }
+    
+    var supportConnectionCount: Bool{
+        switch self {
+        case .hotaru: return false
+        case .server_status: return true
+        case .nezha: return false
+        }
+    }
+    
+    var supportProcessCount: Bool{
+        switch self {
+        case .hotaru: return false
+        case .server_status: return true
+        case .nezha: return false
+        }
+    }
+    
+    var supportIoRw: Bool{
+        switch self {
+        case .hotaru: return false
+        case .server_status: return true
+        case .nezha: return false
+        }
+    }
 }

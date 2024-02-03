@@ -64,9 +64,9 @@ class UniversalServer: Identifiable {
     var ping10010: Int? // 联通线路丢包，可选
     var ping189: Int? // 电信线路丢包，可选
     var ping10086: Int? // 移动线路丢包，可选
-    var time10010: Int? // 联通线路延迟，可选
-    var time189: Int? // 电信线路延迟，可选
-    var time10086: Int? // 移动线路延迟，可选
+    var latency10010: Int? // 联通线路延迟，可选
+    var latency189: Int? // 电信线路延迟，可选
+    var latency10086: Int? // 移动线路延迟，可选
     var tcpCount: Int? // TCP连接数，可选
     var udpCount: Int? // UDP连接数，可选
     var processCount: Int? // 进程数，可选
@@ -74,7 +74,7 @@ class UniversalServer: Identifiable {
     var ioRead: Int? // IO读取，可选
     var ioWrite: Int? // IO写入，可选
     
-    init(name: String, type: String, host: String? = nil, location: String? = nil, online4: Bool, online6: Bool, uptime: String? = nil, load: Double? = nil, networkRx: Int? = nil, networkTx: Int? = nil, networkIn: Int? = nil, networkOut: Int? = nil, cpuPercent: Int? = nil, memoryTotal: Int? = nil, memoryUsed: Int? = nil, swapTotal: Int? = nil, swapUsed: Int? = nil, hddTotal: Int? = nil, hddUsed: Int? = nil, custom: String? = nil, region: String, ping10010: Int? = nil, ping189: Int? = nil, ping10086: Int? = nil, time10010: Int? = nil, time189: Int? = nil, time10086: Int? = nil, tcpCount: Int? = nil, udpCount: Int? = nil, processCount: Int? = nil, threadCount: Int? = nil, ioRead: Int? = nil, ioWrite: Int? = nil) {
+    init(name: String, type: String, host: String? = nil, location: String? = nil, online4: Bool, online6: Bool, uptime: String? = nil, load: Double? = nil, networkRx: Int? = nil, networkTx: Int? = nil, networkIn: Int? = nil, networkOut: Int? = nil, cpuPercent: Int? = nil, memoryTotal: Int? = nil, memoryUsed: Int? = nil, swapTotal: Int? = nil, swapUsed: Int? = nil, hddTotal: Int? = nil, hddUsed: Int? = nil, custom: String? = nil, region: String, ping10010: Int? = nil, ping189: Int? = nil, ping10086: Int? = nil, latency10010: Int? = nil, latency189: Int? = nil, latency10086: Int? = nil, tcpCount: Int? = nil, udpCount: Int? = nil, processCount: Int? = nil, threadCount: Int? = nil, ioRead: Int? = nil, ioWrite: Int? = nil) {
         self.id = name + type + (location ?? "") + (custom ?? "") + (region ?? "")
         self.name = name
         self.type = type
@@ -105,9 +105,9 @@ class UniversalServer: Identifiable {
         self.ping10010 = ping10010
         self.ping189 = ping189
         self.ping10086 = ping10086
-        self.time10010 = time10010
-        self.time189 = time189
-        self.time10086 = time10086
+        self.latency10010 = latency10010
+        self.latency189 = latency189
+        self.latency10086 = latency10086
         self.tcpCount = tcpCount
         self.udpCount = udpCount
         self.processCount = processCount

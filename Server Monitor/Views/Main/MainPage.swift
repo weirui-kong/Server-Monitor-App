@@ -43,7 +43,13 @@ struct MainPage: View {
                                 ))]){
                                     
                                     ForEach(group.server, id: \.id){server in
-                                        ServerCardView(server: server, largerScale: largerScale)
+                                        ServerCardView(
+                                            server: server,
+                                            supportDomesticPing: group.type.supportDomesticPing,
+                                            supportConnectionCount: group.type.supportConnectionCount, 
+                                            supportProcessCount: group.type.supportProcessCount,
+                                            supportIoRw: group.type.supportIoRw
+                                        )
                                             .padding(largerScale ? 5 : 0)
                                             
                                             

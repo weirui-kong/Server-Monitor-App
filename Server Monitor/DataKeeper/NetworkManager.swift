@@ -40,8 +40,8 @@ class NetworkManager: ObservableObject {
             switch response.result {
             case .success(let val):
                 switch response.response!.statusCode{
-                case 200..<300:
-                    completion(val!)
+                case 200:
+                    completion(val ?? Data())
                     //print("\(path)数据请求成功")
                 default:
                     err_completion()

@@ -6,24 +6,35 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CopyrightDisclaimer: View {
     
     var body: some View {
         List{
             Section{
-                ForEach(imgs, id: \.1){img in
-                    NavigationLink(img.0, destination: imageCPDetail(name: img.0, imgName: img.1, author: img.2, description: img.3, link: img.4))
+                ForEach(builtinImgs, id: \.1){img in
+                    NavigationLink(img.0, destination: builtinImageCPDetail(name: img.0, imgName: img.1, author: img.2, description: img.3, link: img.4))
                 }
                 
             }header: {
-                Text("图片")
+                Text("内建图片")
+                    .headerProminence(.increased)
+            }
+            
+            Section{
+                ForEach(onlineImgs, id: \.1){img in
+                    NavigationLink(img.1, destination: onlineImageCPDetail(name: img.1, url: img.2, description: img.3))
+                }
+                
+            }header: {
+                Text("在线图片")
                     .headerProminence(.increased)
             }
         }
     }
     
-    func imageCPDetail(name:String, imgName: String, author: String, description: String, link: String) -> some View{
+    func builtinImageCPDetail(name: String, imgName: String, author: String, description: String, link: String) -> some View{
         VStack(alignment: .leading){
             List{
                 
@@ -55,6 +66,28 @@ struct CopyrightDisclaimer: View {
         }.navigationTitle(name)
     }
     
+    func onlineImageCPDetail(name: String, url: String, description: String) -> some View{
+        List{
+            Section{
+                HStack{
+                    Text("Name")
+                    Spacer()
+                    Text(name)
+                }
+                
+                HStack{
+                    Text("Description")
+                    Spacer()
+                    Text(description)
+                }
+                KFImage(URL(string: url)!)
+                    .resizable()
+                    .scaledToFit()
+            }footer: {
+                Text(onlineImgsTos)
+            }
+        }
+    }
 }
 
 #Preview {
